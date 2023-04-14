@@ -11,7 +11,18 @@
 
 #### DEPS
 
-> apps
+> Apps
+
+- install command :
+
+```shell
+sudo pacman -S rofi polybar alacritty dunst feh \
+xcb-util-cursor xsettingsd mpc mpd dmenu ncmpcpp \
+networkmanager-dmenu-git light python-gobject \
+xfce4-power-manager maim xclip xorg-backlight --noconfirm
+
+```
+- List: 
 
 ```shell
 rofi
@@ -29,10 +40,19 @@ networkmanager-dmenu-git
 python-gobject
 xfce4-power-manager
 maim
+xorg-backlight
 xclip
 ```
 
-> fonts
+> Fonts 
+
+- located in `./others/fonts/`
+j
+```shell 
+sudo mv ~/.config/bspwm/others/fonts/* /usr/share/fonts/           
+```
+
+- List 
 
 ```shell
 Iosevka
@@ -45,11 +65,7 @@ waffle
 > **Other setups**
 
 - move `~/.config/bspwm/others/config.ini` to `~/.config/networkmanager-dmenu/config.ini`
-- edit `/usr/bin/networkmanager_dmenu` change expanduser() to
 
-```py
-CONF.read(expanduser("~/.config/networkmanager-dmenu/config.ini"))
-```
 
 ## USEFUL KEYBINDS
 
