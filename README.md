@@ -22,7 +22,8 @@ networkmanager-dmenu-git light python-gobject \
 xfce4-power-manager maim xclip xorg-backlight --noconfirm
 
 ```
-- List: 
+
+- List:
 
 ```shell
 rofi
@@ -44,15 +45,15 @@ xorg-backlight
 xclip
 ```
 
-> Fonts 
+> Fonts
 
 - located in `./others/fonts/`
-j
-```shell 
-sudo mv ~/.config/bspwm/others/fonts/* /usr/share/fonts/           
+
+```shell
+sudo mv ~/.config/bspwm/others/fonts/* /usr/share/fonts/
 ```
 
-- List 
+- List
 
 ```shell
 Iosevka
@@ -65,7 +66,6 @@ waffle
 > **Other setups**
 
 - move `~/.config/bspwm/others/config.ini` to `~/.config/networkmanager-dmenu/config.ini`
-
 
 ## USEFUL KEYBINDS
 

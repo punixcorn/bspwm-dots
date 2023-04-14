@@ -11,28 +11,6 @@ export sizeofw=26
 ## Run java applications without issues
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-## Get the colors from theme file
-colr(){
-FOREGROUND="$foreground"
-BACKGROUND="$background"
-CURSOR="$cursor"
-BLACK="$color0"
-RED="$color1"
-GREEN="$color2"
-YELLOW="$color3"
-BLUE="$color4"
-MAGENTA="$color5"
-CYAN="$color6"
-WHITE="$color7"
-ALTBLACK="$color8"
-ALTRED="$color9"
-ALTGREEN="$color10"
-ALTYELLOW="$color11"
-ALTBLUE="$color12"
-ALTMAGENTA="$color13"
-ALTCYAN="$color14"
-ALTWHITE="$color15"
-}
 ## Bspwm appearance
 CURRENT_BORDER='1'
 CURRENT_GAP='5'
@@ -160,6 +138,7 @@ xsetroot -cursor_name left_ptr
 #using jhonarbg picom
 picom --experimental-backends --opacity-rule "50:class_g='Bar'" \
     --opacity-rule "80:class_g='Rofi'" \
+    --opacity-rule "70:class_g='Discord'" \
     --round-borders 20 \
     --corner-radius 10 &
 #polybar 
