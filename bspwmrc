@@ -7,7 +7,7 @@ source "$BSPDIR/bin/bspTheme"
 
 ## Export bspwm/bin dir to PATH
 export PATH="${PATH}:$HOME/.config/bspwm/bin"
-
+export sizeofw=26
 ## Run java applications without issues
 export _JAVA_AWT_WM_NONREPARENTING=1
 
@@ -45,7 +45,6 @@ workspaces() {
 	name=1
 	for monitor in `bspc query -M`; do
 	    bspc monitor ${monitor} -n "$name" -d '1' '2' '3' '4' '5' '6' '7' '8'
-	    # bspc monitor ${monitor} -n "$name" -d 'I' 'II' 'III' 'IV' 'V' 'VI' 'VII' 'VIII'
 		# bspc monitor ${monitor} -n "$name" -d '일' '이' '삼' '사' '오' '육' '칠' '팔' '구' '십'
         # bspc monitor ${monitor} -n "$name" -d '' '' '' '' '' '' '' ''
 		let name++
@@ -136,7 +135,7 @@ bspc rule -a stalonetray state=floating manage=off
 ## Autostart -------------------------------------------------#
 
 # Kill if already running
-killall -9 xsettingsd sxhkd dunst ksuperkey xfce4-power-manager 2>/dev/null
+killall -9 xsettingsd sxhkd dunst ksuperkey xfce4-power-manager mpd 2>/dev/null
 
 # Lauch xsettingsd daemon
 [ -f /bin/xsettingsd ] && xsettingsd --config="$BSPDIR"/xsettingsd &
@@ -156,11 +155,13 @@ sxhkd -c "$BSPDIR"/sxhkdrc &
 xsetroot -cursor_name left_ptr
 
 #Restore wallpaper
-[ -f ~/.fehbg ] &&~/.fehbg
+[ -f ~/.fehbg ] && ~/.fehbg
 
 #using jhonarbg picom
-picom --experimental-backends & 
-
+picom --experimental-backends --opacity-rule "50:class_g='Bar'" \
+    --opacity-rule "80:class_g='Rofi'" \
+    --round-borders 20 \
+    --corner-radius 10 &
 #polybar 
 polybar --config="$BSPDIR/polybar/config.ini"
 

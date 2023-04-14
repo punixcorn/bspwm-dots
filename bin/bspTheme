@@ -2,7 +2,7 @@
 # using pywal
 walToggle=0
 wallpaperdir="$HOME/.config/bspwm/others/wallpaper/Curent-wallpaper.jpg"
-
+DIR="$HOME/.config/bspwm/"
 ## -_-_-_-_-_-_-_-_-_ Source wal colors -_-_-_-_-_-_-_-_-_ ##
 function sourcewal(){
     [ -f "$HOME/.cache/wal/colors.sh" ] && source "$HOME/.cache/wal/colors.sh" || walToggle=1
@@ -92,7 +92,7 @@ rofiTheme () {
 	cat > "$DIR"/rofi/colors.rasi <<- EOF	
 	* {
 	    background:			${BACKGROUND};
-        background-alt :    ${CURSOR}
+        background-alt:     ${CURSOR};
 	    foreground:			${FOREGROUND};
 	    selected:			${BLUE};
 	    active: 			${YELLOW};

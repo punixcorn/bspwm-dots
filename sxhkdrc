@@ -1,5 +1,4 @@
-
-##---------- Keybindings for bspwm ----------##
+#---------- Keybindings for bspwm ----------##
 
 # Terminal (alacritty)
 super + Return
@@ -13,13 +12,26 @@ super + shift + Return
 super + t
 	bspterm --full
 
+
+##---------- Toggle polybar ----------##
+super + o
+    polybar-msg cmd hide
+
+super + shift + o
+    bspc config -m focused top_padding $((`bspc config -m focused top_padding` + 26 ))
+super + x
+     polybar-msg cmd hide; bspc config -m focused top_padding $((`bspc config -m focused top_padding` - 26 ));
+
+super + shift + x
+    polybar-msg cmd show
+
 ##---------- Rofi Launcher & Menus ----------##
 
 # Rofi App Launcher(c)
 super + d
   sh ~/.config/bspwm/rofi/launcher 1
 
-super + p
+super + shift + d
   sh ~/.config/bspwm/rofi/launcher 2
   
 # Rofi Network Menu(c)
@@ -51,41 +63,57 @@ ctrl + alt + r
 ctrl + alt + l
     betterlockscreen --lock
 
+##---------- Mpd ----------##
+super + p 
+    mpc toggle
+
+super + s
+    mpc stop 
+
+super + {comma,period}
+   mpc seek {-20, +20}
+
+super + {equal,minus}
+   sh ~/.config/bspwm/bin/volume{ --inc, --dec}
+
+super + m
+   sh ~/.config/bspwm/bin/volume --toggle
+
 ##---------- System Keys ----------##
 
 # Take a screenshot
 Print
-	sh ./others/takeshot --now
+	sh ~/.config/bspwm/bin/takeshot --now
 	
 # Take screenshot in 5 second
 alt + Print	
-	sh ./others/takeshot --in5
+	sh ~/.config/bspwm/bin/takeshot --in5
 
 # Take screenshot in 10 second
 shift + Print	
-	sh ./others/takeshot --in10
+	sh ~/.config/bspwm/bin/takeshot --in10
 
 # Take screenshot of active window
 ctrl + Print
-    sh ./others/takeshot --win
+    sh ~/.config/bspwm/bin/takeshot --win
 
 # Take screenshot of area
 ctrl + alt + Print
-    sh ./others/takeshot --area
+    sh ~/.config/bspwm/bin/takeshot --area
 
 # Brighness control
 XF86MonBrightness{Up,Down}
-	brightness{ --inc, --dec}
+	sh ~/.config/bspwm/bin/brightness{ --inc, --dec}
 	
 # Volume control
 XF86Audio{RaiseVolume,LowerVolume}
-	volume{ --inc, --dec}
+	sh ~/.config/bspwm/bin/volume{ --inc, --dec}
 
 XF86AudioMute
-	volume --toggle
+	sh ~/.config/bspwm/bin/volume --toggle
 
 XF86AudioMicMute
-	volume --toggle-mic
+	sh ~/.config/bspwm/bin/volume --toggle-mic
 	
 # Music control
 XF86Audio{Next,Prev,Play,Stop}
@@ -114,8 +142,8 @@ ctrl + shift + {q,r}
 	bspc {quit,wm -r}
 	
 # Split horizontal, vertical or cancel
-super + {h,v,q}
-	bspc node -p {east,south,cancel}
+super + {bracketleft,bracketright,apostrophe,semicolon,q}
+	bspc node -p {west,east,south,north,cancel}
 
 # Preselect the ratio
 super + ctrl + {1-9}
@@ -143,9 +171,13 @@ super + ctrl + {m,x,y,z}
 super + {_,shift + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
 
-# Change focus to next window, including floating window
-alt + {_,shift + }Tab
+# change focus to next window, including floating window
+alt + {_,shift + }tab
 	bspc node -f {next.local,prev.local}
+
+# change focus to close by windows
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}
 
 # Switch workspace
 ctrl + alt + {Left,Right}
@@ -166,6 +198,10 @@ super + control + {Left,Right,Up,Down}
 ## Shrinking windows
 super + alt + {Left,Right,Up,Down}
 	bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
+
+##Shrinking and Expanding windows horizontal 
+super + shift + {j,k}
+	bspc node -z {left -20 0,left 20 0}
 	
 ## Move floating windows
 alt + shift + {Left,Down,Up,Right}
