@@ -7,7 +7,7 @@ source "$BSPDIR/bin/bspTheme"
 
 ## Export bspwm/bin dir to PATH
 export PATH="${PATH}:$HOME/.config/bspwm/bin"
-export sizeofw=26
+
 ## Run java applications without issues
 export _JAVA_AWT_WM_NONREPARENTING=1
 
