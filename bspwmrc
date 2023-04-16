@@ -3,7 +3,7 @@
 ## Bspwm config directory
 BSPDIR="$HOME/.config/bspwm"
 
-## Get theme color 
+## Get theme color
 source "$BSPDIR/bin/bspTheme"
 
 ## Export bspwm/bin dir to PATH
@@ -22,9 +22,9 @@ CURRENT_SRATIO='0.50'
 ## Manager Workspaces
 workspaces() {
 	name=1
-	for monitor in `bspc query -M`; do
-	    bspc monitor ${monitor} -n "$name" -d '1' '2' '3' '4' '5' '6' '7' '8'
-        # bspc monitor ${monitor} -n "$name" -d '' '' '' '' '' '' '' ''
+	for monitor in $(bspc query -M); do
+		bspc monitor ${monitor} -n "$name" -d '1' '2' '3' '4' '5' '6' '7' '8'
+		# bspc monitor ${monitor} -n "$name" -d '' '' '' '' '' '' '' ''
 		let name++
 	done
 }
@@ -65,47 +65,54 @@ bspc rule -a chromium desktop='^2' follow=on focus=on
 ## 3 > files (always open file manager on workspace-3)
 declare -a files=(Pcmanfm Thunar qBittorrent)
 for i in ${files[@]}; do
-   bspc rule -a $i desktop='^3' follow=on focus=on; done
+	bspc rule -a $i desktop='^3' follow=on focus=on
+done
 
 ## 4 > code (always open editors on workspace-4)
 declare -a code=(Geany code-oss)
 for i in ${code[@]}; do
-   bspc rule -a $i desktop='^4' follow=on focus=on; done
+	bspc rule -a $i desktop='^4' follow=on focus=on
+done
 
 ## 5 > office and docs (always open office/doc apps on workspace-5)
-declare -a office=(Gucharmap Atril Evince \
-libreoffice-writer libreoffice-calc libreoffice-impress \
-libreoffice-startcenter libreoffice Soffice *:libreofficedev *:soffice)
+declare -a office=(Gucharmap Atril Evince
+	libreoffice-writer libreoffice-calc libreoffice-impress
+	libreoffice-startcenter libreoffice Soffice *:libreofficedev *:soffice)
 for i in ${office[@]}; do
-   bspc rule -a $i desktop='^5' follow=on focus=on; done
+	bspc rule -a $i desktop='^5' follow=on focus=on
+done
 
 ## 6 > communication (always open communication apps on workspace-6)
 declare -a comm=(Thunderbird TelegramDesktop Hexchat)
 for i in ${comm[@]}; do
-   bspc rule -a $i desktop='^6' follow=on focus=on; done
+	bspc rule -a $i desktop='^6' follow=on focus=on
+done
 
 ## 7 > media (always open media apps on workspace-7)
 declare -a media=(Audacity Music MPlayer Lxmusic Inkscape Gimp-2.10 obs)
 for i in ${media[@]}; do
-   bspc rule -a $i desktop='^7' state=floating follow=on focus=on; done
+	bspc rule -a $i desktop='^7' state=floating follow=on focus=on
+done
 
 ## 8 > system (always open system apps on workspace-8)
 bspc rule -a 'VirtualBox Manager' desktop='^8' follow=on focus=on
 bspc rule -a GParted desktop='^8' follow=on focus=on
-declare -a settings=(Lxappearance Lxtask Lxrandr Arandr \
-System-config-printer.py Pavucontrol Exo-helper-1 \
-Xfce4-power-manager-settings)
+declare -a settings=(Lxappearance Lxtask Lxrandr Arandr
+	System-config-printer.py Pavucontrol Exo-helper-1
+	Xfce4-power-manager-settings)
 for i in ${settings[@]}; do
-   bspc rule -a $i desktop='^8' state=floating follow=on focus=on; done
+	bspc rule -a $i desktop='^8' state=floating follow=on focus=on
+done
 
-# remove all rules 
+# remove all rules
 bspc rule -r *:*
 
 ## Always Floating Apps
-declare -a floating=(alacritty-float Pcmanfm Thunar Onboard Yad 'Firefox:Places' \
-Viewnior feh Nm-connection-editor)
+declare -a floating=(alacritty-float Pcmanfm Thunar Onboard Yad 'Firefox:Places'
+	Viewnior feh Nm-connection-editor)
 for i in ${floating[@]}; do
-   bspc rule -a $i state=floating follow=on focus=on; done
+	bspc rule -a $i state=floating follow=on focus=on
+done
 
 bspc rule -a Conky state=floating manage=off
 bspc rule -a stalonetray state=floating manage=off
@@ -119,7 +126,7 @@ killall -9 xsettingsd sxhkd dunst ksuperkey xfce4-power-manager mpd 2>/dev/null
 [ -f /bin/xsettingsd ] && xsettingsd --config="$BSPDIR"/xsettingsd &
 
 # polkit agent
-if [[ ! `pidof xfce-polkit` ]]; then
+if [[ ! $(pidof xfce-polkit) ]]; then
 	[ -f /usr/lib/xfce-polkit/xfce-polkit ] && /usr/lib/xfce-polkit/xfce-polkit &
 fi
 
@@ -136,16 +143,16 @@ xsetroot -cursor_name left_ptr
 [ -f ~/.fehbg ] && ~/.fehbg
 
 #using jhonarbg picom
-picom --experimental-backends --opacity-rule "50:class_g='Bar'" \
-    --opacity-rule "80:class_g='Rofi'" \
-    --opacity-rule "70:class_g='Discord'" \
-    --round-borders 20 \
-    --corner-radius 10 &
-#polybar 
+picom --experimental-backends --opacity-rule "50:class_g='Polybar'" \
+	--opacity-rule "80:class_g='Rofi'" \
+	--opacity-rule "70:class_g='Discord'" \ 
+--round-borders 20 \ 
+--corner-radius 10 &
+#polybar
 polybar --config="$BSPDIR/polybar/config.ini"
 
-#dunst 
+#dunst
 dunst -config "$BSPDIR/others/dunstrc"
 
 # floating terminal
-bspfloat & 
+bspfloat &
