@@ -8,11 +8,6 @@ super + Return
 super + shift + Return
   bspterm --float
 
-# Terminal (fullscreen)
-super + t
-	bspterm --full
-
-
 ##---------- Toggle polybar ----------##
 #super + o
 #    polybar-msg cmd hide
@@ -41,7 +36,7 @@ super + n
 super + w 
     firefox
 
-super + shift + t 
+super + t 
     sh ~/.config/bspwm/rofi/todo/launcher 
 ##---------- Applications ----------##
 
