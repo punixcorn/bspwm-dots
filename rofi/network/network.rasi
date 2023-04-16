@@ -7,8 +7,8 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "./colors.rasi"
-@import                          "./fonts.rasi"
+@import                          "../dependencies/colors.rasi"
+@import                          "../dependencies/fonts.rasi"
 
 * {
     border-colour:               var(selected);

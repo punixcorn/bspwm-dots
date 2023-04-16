@@ -1,0 +1,4 @@
+#!/bin/bash 
+rofi -modi todo:$HOME/.config/bspwm/rofi/todo/todo -theme ~/.config/bspwm/rofi/todo/todo.rasi -show todo
+
+

@@ -29,22 +29,20 @@ super + t
 
 # Rofi App Launcher(c)
 super + d
-  sh ~/.config/bspwm/rofi/launcher 1
+  sh ~/.config/bspwm/rofi/menu/launcher 1
 
 super + shift + d
-  sh ~/.config/bspwm/rofi/launcher 2
+  sh ~/.config/bspwm/rofi/menu/launcher 2
   
 # Rofi Network Menu(c)
 super + n
 	networkmanager_dmenu
 
-# notification 
-super + e
-    kill -s USR1 $(pidof deadd-notification-center)
-
 super + w 
     firefox
 
+super + shift + t 
+    sh ~/.config/bspwm/rofi/todo/launcher 
 ##---------- Applications ----------##
 
 # Launch Apps

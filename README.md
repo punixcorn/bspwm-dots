@@ -19,7 +19,8 @@
 sudo pacman -S rofi polybar alacritty dunst feh \
 xcb-util-cursor xsettingsd mpc mpd dmenu ncmpcpp \
 networkmanager-dmenu-git light python-gobject \
-xfce4-power-manager maim xclip xorg-backlight --noconfirm
+xfce4-power-manager maim xclip xorg-xbacklight \
+viewnior --noconfirm
 
 ```
 
@@ -41,6 +42,7 @@ networkmanager-dmenu-git
 python-gobject
 xfce4-power-manager
 maim
+viewnior
 xorg-backlight
 xclip
 ```

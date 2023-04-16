@@ -10,7 +10,7 @@ function sourcewal(){
 sourcewal
 
 if [ $walToggle -eq 1 ];then 
-    [ -f "$wallPaPer" ] && [ -f /bin/wal ] && wal -i "$wallpaper" || exit 1
+    [ -f "$wallpaperdir" ] && [ -f /bin/wal ] && wal -i "$wallpaperdir" || exit 1
     sourcewal 
 fi
 
@@ -41,7 +41,6 @@ getcolors () {
 polybarTheme () {
 	cat > "$DIR"/polybar/colors.ini <<- EOF	
 	[color]
-
 	foreground = ${FOREGROUND}
 	background = ${BACKGROUND}
     primary = ${CURSOR}
@@ -89,7 +88,7 @@ alacrittyTheme () {
 
 ## Write rofi colors.rasi file with current theme colors
 rofiTheme () {
-	cat > "$DIR"/rofi/colors.rasi <<- EOF	
+	cat > "$DIR"/rofi/dependencies/colors.rasi <<- EOF	
 	* {
 	    background:			${BACKGROUND};
         background-alt:     ${CURSOR};
