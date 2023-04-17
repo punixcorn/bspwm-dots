@@ -12,8 +12,8 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "./colors.rasi"
-@import                          "./fonts.rasi"
+@import                          "~/.config/bspwm/rofi/dependencies/colors.rasi"
+@import                          "~/.config/bspwm/rofi/dependencies/fonts.rasi"
 
 * {
     border-colour:               var(selected);
