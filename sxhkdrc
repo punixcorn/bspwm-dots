@@ -38,6 +38,7 @@ super + w
 
 super + t 
     sh ~/.config/bspwm/rofi/todo/launcher 
+
 ##---------- Applications ----------##
 
 # Launch Apps
