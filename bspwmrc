@@ -145,6 +145,9 @@ xsetroot -cursor_name left_ptr
 #using jhonarbg picom
 picom --experimental-backends --opacity-rule "50:class_g='Polybar'" --opacity-rule "80:class_g='Rofi'" --opacity-rule "70:class_g='Discord'" --round-borders 20 --corner-radius 10 &
 
+# if this doesn't work , use
+# picom --conf ~/.config/bspwm/others/picom.conf --experimental-backends &
+
 #polybar
 polybar --config="$BSPDIR/polybar/config.ini"
 
@@ -153,3 +156,6 @@ dunst -config "$BSPDIR/others/dunstrc"
 
 # floating terminal
 bspfloat &
+
+# Launch your apps [ create the file and put your apps there ]
+[ -f ~/.config/bspwm/others/startup.sh ] && sh ~/.config/bspwm/others/startup.sh
