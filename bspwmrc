@@ -150,7 +150,7 @@ picom --experimental-backends --opacity-rule "50:class_g='Polybar'" \
 --corner-radius 10 &
 
 # if this doesn't work , use
-# picom --conf ~/.config/bspwm/others/picom.conf --experimental-backends & 
+# picom --conf ~/.config/bspwm/others/picom.conf --experimental-backends &
 
 #polybar
 polybar --config="$BSPDIR/polybar/config.ini"
@@ -160,3 +160,6 @@ dunst -config "$BSPDIR/others/dunstrc"
 
 # floating terminal
 bspfloat &
+
+# Launch your apps [ create the file and put your apps there ]
+[ -f ~/.config/bspwm/others/startup.sh ] && sh ~/.config/bspwm/others/startup.sh
