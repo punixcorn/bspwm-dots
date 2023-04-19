@@ -1,12 +1,12 @@
 # Bspwm Dots
 
-![img](./.images/img1.png)
-
+![img](./.images/img1.png) ![img](./.images/img3.png)
 ![img2](./.images/img2.png)
 
 ### SETUP
 
-- **Installation** : \
+- **Installation** :
+  \
   move everything to `~/.config/bspwm/`
 
 #### DEPS
@@ -21,7 +21,10 @@ xcb-util-cursor xsettingsd mpc mpd dmenu ncmpcpp \
 networkmanager-dmenu-git light python-gobject \
 xfce4-power-manager maim xclip xorg-xbacklight \
 viewnior --noconfirm
+```
 
+```shell
+cava is needed for the polybar visualizer, but isn't in the pacman repos use the AUR
 ```
 
 - List:
@@ -45,6 +48,7 @@ maim
 viewnior
 xorg-backlight
 xclip
+cava
 ```
 
 > Fonts
@@ -67,17 +71,18 @@ waffle
 
 > **Other setups**
 
-- move `~/.config/bspwm/others/config.ini` to `~/.config/networkmanager-dmenu/config.ini`
+- move `~/.config/bspwm/others/config.ini` to
+  `~/.config/networkmanager-dmenu/config.ini`
 
 ## USEFUL KEYBINDS
 
 - **Keywords**
-  > W = Windows key \
-  > C = Ctrl \
-  > A = Alt \
-  > T = Tab \
-  > S = Shift \
-  > R = Enter \
+  > W = Windows key\
+  > C = Ctrl\
+  > A = Alt\
+  > T = Tab\
+  > S = Shift\
+  > R = Enter
 
 #### WINDOW MANAGEMENT
 

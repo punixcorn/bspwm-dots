@@ -42,11 +42,11 @@ super + t
 ##---------- Applications ----------##
 
 # Launch Apps
-super + shift + {f,w,e,q,a,z}
-	{thunar,firefox,virt-manager,whatsapp-for-linux,telegram-desktop,discord}
+super + shift + {w,e,q,a,z}
+	{firefox,virt-manager,whatsapp-for-linux,telegram-desktop,discord}
 
 # Terminal Apps
-ctrl + alt + r
+super + shift + r
 	alacritty --config-file ~/.config/bspwm/alacritty/alacritty.yml -e ranger
 
 # Color Picker
