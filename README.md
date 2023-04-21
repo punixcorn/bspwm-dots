@@ -1,6 +1,11 @@
-# Bspwm Dots
+Bspwm Dots
 
-![img](./.images/img1.png) ![img](./.images/img3.png)
+![img](./.images/img1.png)
+
+![img](./.images/conky.img)
+
+![img](./.images/img3.png)
+
 ![img2](./.images/img2.png)
 
 ### SETUP
@@ -20,7 +25,7 @@ sudo pacman -S rofi polybar alacritty dunst feh \
 xcb-util-cursor xsettingsd mpc mpd dmenu ncmpcpp \
 networkmanager-dmenu-git light python-gobject \
 xfce4-power-manager maim xclip xorg-xbacklight \
-viewnior --noconfirm
+viewnior conky --noconfirm
 ```
 
 ```shell
@@ -49,6 +54,7 @@ viewnior
 xorg-backlight
 xclip
 cava
+conky
 ```
 
 > Fonts
