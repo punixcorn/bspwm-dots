@@ -157,5 +157,8 @@ dunst -config "$BSPDIR/others/dunstrc"
 # floating terminal
 bspfloat &
 
+# conky
+sh "$BSPDIR/conky/start.sh"
+
 # Launch your apps [ create the file and put your apps there ]
 [ -f ~/.config/bspwm/others/startup.sh ] && sh ~/.config/bspwm/others/startup.sh
