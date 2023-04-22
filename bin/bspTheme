@@ -1,21 +1,22 @@
 #!/bin/bash
 # using pywal
 walToggle=0
-wallpaperdir="$HOME/.config/bspwm/others/wallpaper/Curent-wallpaper.jpg"
+wallpaperdir="$HOME/.config/bspwm/others/wallpaper/wallpaper.jpg"
 DIR="$HOME/.config/bspwm/"
 ## -_-_-_-_-_-_-_-_-_ Source wal colors -_-_-_-_-_-_-_-_-_ ##
-function sourcewal(){
-    [ -f "$HOME/.cache/wal/colors.sh" ] && source "$HOME/.cache/wal/colors.sh" || walToggle=1
+function sourcewal() {
+	[ -f "$HOME/.cache/wal/colors.sh" ] && source "$HOME/.cache/wal/colors.sh" || walToggle=1
 }
+## getting the themes
 sourcewal
 
-if [ $walToggle -eq 1 ];then 
-    [ -f "$wallpaperdir" ] && [ -f /bin/wal ] && wal -i "$wallpaperdir" || exit 1
-    sourcewal 
+if [ $walToggle -eq 1 ]; then
+	[ -f "$wallpaperdir" ] && [ -f /bin/wal ] && wal -i "$wallpaperdir" || exit 1
+	sourcewal
 fi
 
 ## -_-_-_-_-_-_-_-_-_ Assign Colors -_-_-_-_-_-_-_-_-_ ##
-getcolors () {
+getcolors() {
 	FOREGROUND="$foreground"
 	BACKGROUND="$background"
 	CURSOR="$cursor"
@@ -38,23 +39,27 @@ getcolors () {
 }
 
 ## Write polybar colors file with current theme colors
-polybarTheme () {
-	cat > "$DIR"/polybar/colors.ini <<- EOF	
-	[color]
-	foreground = ${FOREGROUND}
-	background = ${BACKGROUND}
-    primary = ${CURSOR}
-    ; workspace color
-    workcolor = ${FOREGROUND} 
-	red = ${RED}
-	green = ${GREEN}
-    yellow = ${YELLOW}
+polybarTheme() {
+	cat >"$DIR"/polybar/colors.ini <<-EOF
+		[color]
+		foreground = ${FOREGROUND}
+		background = ${BACKGROUND}
+		primary = ${CURSOR}
+		; workspace color
+		workcolor = ${FOREGROUND} 
+		red = ${RED}
+		green = ${GREEN}
+		yellow = ${YELLOW}
 	EOF
+
+	pgrep -U 1000 -x polybar | xargs kill -9
+	polybar --config="~/.config/bspwm/polybar/config.ini" &
+	disown
 }
 
 ## Write alacritty colors.yml file with current theme colors
-alacrittyTheme () {
-	cat > "$DIR"/alacritty/colors.yml <<- _EOF_
+alacrittyTheme() {
+	cat >"$DIR"/alacritty/colors.yml <<-_EOF_
 		## Colors configuration
 		colors:
 		  # Default colors
@@ -87,23 +92,23 @@ alacrittyTheme () {
 }
 
 ## Write rofi colors.rasi file with current theme colors
-rofiTheme () {
-	cat > "$DIR"/rofi/dependencies/colors.rasi <<- EOF	
-	* {
-	    background:			${BACKGROUND};
-        background-alt:     ${CURSOR};
-	    foreground:			${FOREGROUND};
-	    selected:			${BLUE};
-	    active: 			${YELLOW};
-	    urgent:				${RED};
-	}
+rofiTheme() {
+	cat >"$DIR"/rofi/dependencies/colors.rasi <<-EOF
+		* {
+		    background:   ${BACKGROUND};
+		    background-alt:     ${CURSOR};
+		    foreground:   ${FOREGROUND};
+		    selected:     ${BLUE};
+		    active:       ${YELLOW};
+		    urgent:        ${RED};
+		}
 	EOF
 }
 
 ## Write dunstrc file with current theme colors
-dunstTheme () {
-	sed -i '/urgency_low/Q' "$DIR"/dunstrc
-	cat >> "$DIR"/others/dunstrc <<- _EOF_
+dunstTheme() {
+	sed -i '/urgency_low/Q' "$DIR"/others/dunstrc
+	cat >>"$DIR"/others/dunstrc <<-_EOF_
 		[urgency_low]
 		timeout = 3
 		background = "${BACKGROUND}"
@@ -124,14 +129,13 @@ dunstTheme () {
 	_EOF_
 }
 
-## Execute functions and run main 
-main () {
-    GetWallColors
+## Execute functions and run main
+main() {
 	getcolors
-    polybarTheme
+	polybarTheme
 	alacrittyTheme
 	rofiTheme
-	bspdunst
+	dunstTheme
 }
 
 main
