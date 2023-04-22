@@ -1,4 +1,4 @@
 #/bin/bash
-killall conky
-conky -c $(pwd)/config.conf &>/dev/null &
+pgrep -U 1000 -x conky | xargs kill -9
+conky -c ~/.config/bspwm/conky/config.conf &
 exit
