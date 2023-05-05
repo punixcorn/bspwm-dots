@@ -86,6 +86,9 @@ alacrittyTheme() {
 		    white:   '${ALTWHITE}'
 	_EOF_
 }
+kittyTheme() {
+	[ -f ~/.cache/wal/colors-kitty.conf ] && cp ~/.cache/wal/colors-kitty.conf ../kitty/color.conf
+}
 
 ## Write rofi colors.rasi file with current theme colors
 rofiTheme() {
@@ -132,5 +135,6 @@ main() {
 	alacrittyTheme
 	rofiTheme
 	dunstTheme
+	kittyTheme
 }
 main
