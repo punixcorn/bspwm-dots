@@ -8,6 +8,10 @@ Bspwm Dots
 
 ![img2](./.images/img2.png)
 
+![img4](./.images/img4.png)
+
+#### support for pywal
+
 ### SETUP
 
 - **Installation** :
@@ -30,6 +34,7 @@ viewnior conky --noconfirm
 
 ```shell
 cava is needed for the polybar visualizer, but isn't in the pacman repos use the AUR
+wal is needed for theme generation based on wallpaper , also only in AUR
 ```
 
 - List:
@@ -82,6 +87,8 @@ waffle
 
 ## USEFUL KEYBINDS
 
+> For all KEYBINDS check the sxhkdrc file in `~/.config/bspwm`
+
 - **Keywords**
   > W = Windows key\
   > C = Ctrl\
@@ -98,6 +105,10 @@ waffle
 | W + up,down,left,right | Move focus { left,down,up,right } |
 | W + S + j,k            | { grow , shrink } focused window  |
 | W + 1 -> 9             | Move to workspace 1 -> 9          |
+| W + }                  | Create Virtical space(Right)      |
+| W + {                  | Create Virtical space(Left)       |
+| W + ;                  | Create horizontal space(bottom)   |
+| W + '                  | Create horizontal space(top)      |
 
 #### APPS
 
@@ -112,3 +123,13 @@ waffle
 | W + n         | Rofi Network manaager  |
 | W + d         | Rofi app menu          |
 | W + shift + d | Rofi app menu 2        |
+| W + t         | Rofi todo menu         |
+
+### Others
+
+| Key     | Action                   |
+| ------- | ------------------------ |
+| W + '+' | volume increase          |
+| W + '-' | volume decrease          |
+| W + '>' | music(mpd) seek forward  |
+| W + '<' | music(mpd) seek backward |
