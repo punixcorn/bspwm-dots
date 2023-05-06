@@ -5,22 +5,22 @@
 font:
   # Normal (roman) font face
   normal:
-    family: "JetBrains Mono Nerd Font"
+    family: "scientifica"
     #style: Regular
 
   # Bold font face
   bold:
-    family: "JetBrains Mono Nerd Font"
+    family: "scientifica"
     #style: Bold
 
   # Italic font face
   italic:
-    family: "JetBrains Mono Nerd Font"
+    family: "scientifica"
     #style: Italic
 
   # Bold italic font face
   bold_italic:
-    family: "JetBrains Mono Nerd Font"
+    family: "scientifica"
     #style: Bold Italic
 
   # Point size

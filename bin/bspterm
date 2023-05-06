@@ -2,11 +2,14 @@
 
 ## launch alacritty with bspwm config
 CONFIG="$HOME/.config/bspwm/alacritty/alacritty.yml"
+CONFIG_KITTY="$HOME/.config/bspwm/kitty/kitty.conf"
 
 if [ "$1" == "--float" ]; then
 	alacritty --class 'alacritty-float,alacritty-float' --config-file "$CONFIG"
 elif [ "$1" == "--full" ]; then
-	alacritty --class 'Fullscreen,Fullscreen' --config-file "$CONFIG" 
+	alacritty --class 'Fullscreen,Fullscreen' --config-file "$CONFIG"
+elif [ "$1" == "kitty" ]; then
+	kitty -c "$CONFIG_KITTY"
 else
 	alacritty --config-file "$CONFIG"
 fi
