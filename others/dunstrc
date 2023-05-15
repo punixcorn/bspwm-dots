@@ -307,18 +307,18 @@
 
 [urgency_low]
 timeout = 3
-background = "#0c0b0c"
-foreground = "#adc7de"
-frame_color = "#5C6F8F"
+background = "#091515"
+foreground = "#d4cdc9"
+frame_color = "#8A774D"
 
 [urgency_normal]
 timeout = 5
-background = "#0c0b0c"
-foreground = "#adc7de"
-frame_color = "#5C6F8F"
+background = "#091515"
+foreground = "#d4cdc9"
+frame_color = "#8A774D"
 
 [urgency_critical]
 timeout = 0
-background = "#0c0b0c"
-foreground = "#adc7de"
-frame_color = "#575267"
+background = "#091515"
+foreground = "#d4cdc9"
+frame_color = "#B33535"
