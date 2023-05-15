@@ -1,3 +1,5 @@
 !#/bin/bash
-
-MONITOR=HDMI1 polybar -c config.ini & disown
+display=$1
+DIR="$HOME/.config/bspwm/polybar/"
+MONITOR=HDMI1 polybar -c $DIR/config.ini &
+disown

@@ -128,6 +128,10 @@ dunstTheme() {
 	_EOF_
 }
 
+firefoxTheme() {
+	[ -f /bin/firefox ] && [ -f /bin/pywalfox ] && [ -f /bin/wal ] && pywalfox install || echo "firefox pywal failed or not found\n"
+}
+
 ## Execute functions and run main
 main() {
 	getcolors
@@ -136,5 +140,6 @@ main() {
 	rofiTheme
 	dunstTheme
 	kittyTheme
+	firefoxTheme
 }
 main
