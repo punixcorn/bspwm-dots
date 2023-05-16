@@ -67,6 +67,9 @@ super + s
 super + {comma,period}
    mpc seek {-20, +20}
 
+super + shift + {comma,period}
+   mpc {prev,next}
+
 super + {equal,minus}
    sh ~/.config/bspwm/bin/volume{ --inc, --dec}
 
