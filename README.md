@@ -1,22 +1,18 @@
 Bspwm Dots
 
-![img](./.images/img1.png)
-
 ![img](./.images/conky.img)
-
-![img](./.images/img3.png)
-
-![img2](./.images/img2.png)
 
 ![img4](./.images/img4.png)
 
-#### support for pywal
+#### 100% support for pywal
 
 ### SETUP
 
 - **Installation** :
   \
-  move everything to `~/.config/bspwm/`
+  move everything to `~/.config/bspwm/`\
+  move `~/.config/bspwm/others/config.ini` to\
+  `~/.config/networkmanager-dmenu/config.ini`
 
 #### DEPS
 
@@ -110,26 +106,36 @@ waffle
 | W + ;                  | Create horizontal space(bottom)   |
 | W + '                  | Create horizontal space(top)      |
 
+#### Rofi
+
+| key       | Menu              |
+| --------- | ----------------- |
+| W + d     | app menu          |
+| W + S + d | app menu (small)  |
+| W + n     | network menu      |
+| W + t     | Todo note         |
+| W + S + t | theme picker menu |
+
 #### APPS
 
-| key           | Application            |
-| ------------- | ---------------------- |
-| W + R         | terminal ( alacritty ) |
-| W + S + R     | floatting terminal     |
-| W + w         | Firefox                |
-| W + S + w     | Firefox                |
-| W + S + z     | Discord                |
-| W + S + a     | Telegram               |
-| W + n         | Rofi Network manaager  |
-| W + d         | Rofi app menu          |
-| W + shift + d | Rofi app menu 2        |
-| W + t         | Rofi todo menu         |
+| key       | Application            |
+| --------- | ---------------------- |
+| W + R     | terminal ( alacritty ) |
+| W + S + R | floatting terminal     |
+| W + w     | Firefox                |
+| W + S + w | Firefox                |
+| W + S + z | Discord                |
+| W + S + a | Telegram               |
 
-### Others
+### Music
 
-| Key     | Action                   |
-| ------- | ------------------------ |
-| W + '+' | volume increase          |
-| W + '-' | volume decrease          |
-| W + '>' | music(mpd) seek forward  |
-| W + '<' | music(mpd) seek backward |
+| Key       | Action                   |
+| --------- | ------------------------ |
+| W + p     | play / pause             |
+| W + '+'   | volume increase          |
+| W + '-'   | volume decrease          |
+| W + m     | toggle mute              |
+| W + S + > | music(mpd) next          |
+| W + S + < | music(mpd) previous      |
+| W + '>'   | music(mpd) seek forward  |
+| W + '<'   | music(mpd) seek backward |

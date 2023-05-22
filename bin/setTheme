@@ -1,0 +1,17 @@
+#!/bin/bash
+col1="\e[35m"
+res="\e[0m"
+DIRP="$HOME/.config/bspwm/wallpaper"
+
+echo "light"
+echo "dark"
+
+if [ "$1" = "dark" ]; then
+	[ -f "$DIRP/dark.png" ] && cp "$DIRP/dark.png" "$DIRP/wallpaper.png" && bspTheme 1 >/dev/null 2>&1 || {
+		echo -e "${col1}[ $DIRP/dark.png ] ${res}was not found"
+	}
+elif [ "$1" = "light" ]; then
+	[ -f "$DIRP/light.png" ] && cp "$DIRP/light.png" "$DIRP/wallpaper.png" && bspTheme 1 >/dev/null 2>&1 || {
+		echo -e "${col1}[ $DIRP/light.png ] ${res}was not found"
+	}
+fi

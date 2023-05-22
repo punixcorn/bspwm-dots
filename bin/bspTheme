@@ -2,7 +2,7 @@
 # using pywal
 override=$1
 walToggle=0
-wallpaperdir="$HOME/.config/bspwm/others/wallpaper/wallpaper.png"
+wallpaperdir="$HOME/.config/bspwm/wallpaper/wallpaper.png"
 DIR="$HOME/.config/bspwm/"
 
 ## -_-_-_-_-_-_-_-_-_ Source wal colors -_-_-_-_-_-_-_-_-_ ##
@@ -11,15 +11,22 @@ function sourcewal() {
 	echo -e "\e[32m [*] \e[0mApplying Theme"
 	[ -f "$HOME/.cache/wal/colors.sh" ] && source "$HOME/.cache/wal/colors.sh" || walToggle=1
 }
+
 ### getting the theme colors
 sourcewal
 
-if [ $walToggle -eq 1 ] || [ $override -ne 0 ]; then
-	[ -f "$wallpaperdir" ] && [ -f /bin/wal ] && wal -i "$wallpaperdir" || {
+if [ $walToggle -eq 1 ] || [ "$override" != "" ]; then
+	[ -f "$wallpaperdir" ] && [ -f /bin/wal ] && wal -c || {
+		echo "wall not installed or wallpaper not found"
+		exit
+	}
+	echo -e "\e[32m [*] \e[0mSetting wallpaper..."
+	cp "$wallpaperdir" "$HOME/.wallpaper.png" 2>/dev/null
+	wal -q -i "$wallpaperdir" || {
 		echo "wallpaper or wal not found exiting..."
 		exit 1
 	}
-	echo -e "\e[32m [*] \e[0mGenerating Theme"
+	echo -e "\e[32m [*] \e[0mGenerating Theme..."
 	sourcewal
 fi
 
@@ -51,14 +58,14 @@ polybarTheme() {
 	echo -e "\e[32m [*] \e[0mApplying colors to polybar"
 	cat >"$DIR"/polybar/colors.ini <<-EOF
 		[color]
-		foreground = ${FOREGROUND}
-		background = ${BACKGROUND}
-		primary = ${CURSOR}
-		;workspace color
-		workcolor = ${FOREGROUND} 
-		red = ${RED}
-		green = ${GREEN}
-		yellow = ${YELLOW}
+		foreground =    ${FOREGROUND}
+		background =    ${BACKGROUND}
+		primary =       ${CURSOR}
+
+		workcolor =     ${FOREGROUND} 
+		red =           ${RED}
+		green =         ${GREEN}
+		yellow =        ${YELLOW}
 	EOF
 }
 
@@ -106,12 +113,12 @@ rofiTheme() {
 	echo -e "\e[32m [*] \e[0mApplying colors to rofi"
 	cat >"$DIR"/rofi/dependencies/colors.rasi <<-EOF
 		* {
-		    background:   ${BACKGROUND};
+		    background:         ${BACKGROUND};
 		    background-alt:     ${CURSOR};
-		    foreground:   ${FOREGROUND};
-		    selected:     ${BLUE};
-		    active:       ${YELLOW};
-		    urgent:        ${RED};
+		    foreground:         ${FOREGROUND};
+		    selected:           ${BLUE};
+		    active:             ${YELLOW};
+		    urgent:             ${RED};
 		}
 	EOF
 }
@@ -123,21 +130,21 @@ dunstTheme() {
 	cat >>"$DIR"/others/dunstrc <<-_EOF_
 		[urgency_low]
 		timeout = 3
-		background = "${BACKGROUND}"
-		foreground = "${FOREGROUND}"
-		frame_color = "${BLUE}"
+		background =   "${BACKGROUND}"
+		foreground =   "${FOREGROUND}"
+		frame_color =  "${BLUE}"
 
 		[urgency_normal]
 		timeout = 5
-		background = "${BACKGROUND}"
-		foreground = "${FOREGROUND}"
-		frame_color = "${BLUE}"
+		background =   "${BACKGROUND}"
+		foreground =   "${FOREGROUND}"
+		frame_color =  "${BLUE}"
 
 		[urgency_critical]
 		timeout = 0
-		background = "${BACKGROUND}"
-		foreground = "${FOREGROUND}"
-		frame_color = "${RED}"
+		background =   "${BACKGROUND}"
+		foreground =   "${FOREGROUND}"
+		frame_color =  "${RED}"
 	_EOF_
 }
 
@@ -153,7 +160,7 @@ main() {
 	alacrittyTheme
 	rofiTheme
 	dunstTheme
-	kittyTheme
+	#kittyTheme
 	firefoxTheme
 }
 main

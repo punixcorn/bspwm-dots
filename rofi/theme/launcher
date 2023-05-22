@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rofi -modi Theme:/home/potatojs/.config/bspwm/bin/setTheme -theme ~/.config/bspwm/rofi/network/network.rasi -show Theme
