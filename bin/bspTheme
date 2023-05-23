@@ -8,7 +8,7 @@ DIR="$HOME/.config/bspwm/"
 ## -_-_-_-_-_-_-_-_-_ Source wal colors -_-_-_-_-_-_-_-_-_ ##
 
 function sourcewal() {
-	echo -e "\e[32m [*] \e[0mApplying Theme"
+	echo -e "\e[32m[*] \e[0mApplying Theme"
 	[ -f "$HOME/.cache/wal/colors.sh" ] && source "$HOME/.cache/wal/colors.sh" || walToggle=1
 }
 
@@ -55,7 +55,7 @@ getcolors() {
 
 ## Write polybar colors file with current theme colors
 polybarTheme() {
-	echo -e "\e[32m [*] \e[0mApplying colors to polybar"
+	echo -e "\e[32m[*] \e[0mApplying colors to polybar"
 	cat >"$DIR"/polybar/colors.ini <<-EOF
 		[color]
 		foreground =    ${FOREGROUND}
@@ -71,7 +71,7 @@ polybarTheme() {
 
 ## Write alacritty colors.yml file with current theme colors
 alacrittyTheme() {
-	echo -e "\e[32m [*] \e[0mApplying colors to Alacritty"
+	echo -e "\e[32m[*] \e[0mApplying colors to Alacritty"
 	cat >"$DIR"/alacritty/colors.yml <<-_EOF_
 		## Colors configuration
 		colors:
@@ -104,13 +104,13 @@ alacrittyTheme() {
 	_EOF_
 }
 kittyTheme() {
-	echo -e "\e[32m [*] \e[0mApplying colors to Kitty"
+	echo -e "\e[32m[*] \e[0mApplying colors to Kitty"
 	[ -f ~/.cache/wal/colors-kitty.conf ] && cp ~/.cache/wal/colors-kitty.conf ../kitty/color.conf
 }
 
 ## Write rofi colors.rasi file with current theme colors
 rofiTheme() {
-	echo -e "\e[32m [*] \e[0mApplying colors to rofi"
+	echo -e "\e[32m[*] \e[0mApplying colors to rofi"
 	cat >"$DIR"/rofi/dependencies/colors.rasi <<-EOF
 		* {
 		    background:         ${BACKGROUND};
@@ -125,7 +125,7 @@ rofiTheme() {
 
 ## Write dunstrc file with current theme colors
 dunstTheme() {
-	echo -e "\e[32m [*] \e[0mApplying colors to dunst"
+	echo -e "\e[32m[*] \e[0mApplying colors to dunst"
 	sed -i '/urgency_low/Q' "$DIR"/others/dunstrc
 	cat >>"$DIR"/others/dunstrc <<-_EOF_
 		[urgency_low]
@@ -149,8 +149,8 @@ dunstTheme() {
 }
 
 firefoxTheme() {
-	echo -e "\e[32m [*] \e[0mApplying colors to Firfox"
-	[ -f /bin/firefox ] && [ -f /bin/pywalfox ] && [ -f /bin/wal ] && pywalfox install >/dev/null 2>&1 || echo "firefox pywal failed or not found\n"
+	echo -e "\e[32m[*] \e[0mApplying colors to Firfox"
+	[ -f /bin/firefox ] && [ -f /bin/pywalfox ] && [ -f /bin/wal ] && pywalfox install >/dev/null 2>&1 || echo -e "\e[32m[ERR] \e[0mfirefox pywal failed or not found\n"
 }
 
 ## Execute functions and run main
