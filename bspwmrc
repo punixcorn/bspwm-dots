@@ -23,7 +23,7 @@ CURRENT_SRATIO='0.50'
 workspaces() {
 	name=1
 	for monitor in $(bspc query -M); do
-		bspc monitor ${monitor} -n "$name" -d '1' '2' '3' '4' '5'
+		bspc monitor ${monitor} -n "$name" -d '1' '2' '3' '4' '5' '6' '7' '8'
 		# bspc monitor ${monitor} -n "$name" -d '' '' '' '' '' '' '' ''
 		let name++
 	done
@@ -109,7 +109,7 @@ bspc rule -r *:*
 
 ## Always Floating Apps
 declare -a floating=(alacritty-float Pcmanfm Thunar Onboard Yad 'Firefox:Places'
-	Viewnior feh Nm-connection-editor)
+	Viewnior feh Nm-connection-editor 'Xtreme Download Manager')
 for i in ${floating[@]}; do
 	bspc rule -a $i state=floating follow=on focus=on
 done

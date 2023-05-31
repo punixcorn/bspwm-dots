@@ -3,15 +3,32 @@ col1="\e[35m"
 res="\e[0m"
 DIRP="$HOME/.config/bspwm/wallpaper"
 
-echo "light"
-echo "dark"
+echo "black"
+echo "blueArch"
+echo "blueBlack"
+echo "blueSky"
+echo "brightPurple"
+echo "colorful"
+echo "colorMt"
+echo "cyberpunk"
+echo "green"
+echo "gruvbox"
+echo "purpleMt"
+echo "red"
+echo "sword"
+echo "beach"
+echo "blade"
+echo "default"
+echo "dracula"
+echo "eleven-dark"
+echo "eleven"
+echo "flowers"
+echo "forest"
+echo "gruvbox"
+echo "spark"
 
-if [ "$1" = "dark" ]; then
-	[ -f "$DIRP/dark.png" ] && cp "$DIRP/dark.png" "$DIRP/wallpaper.png" && bspTheme 1 >/dev/null 2>&1 || {
-		echo -e "${col1}[ $DIRP/dark.png ] ${res}was not found"
-	}
-elif [ "$1" = "light" ]; then
-	[ -f "$DIRP/light.png" ] && cp "$DIRP/light.png" "$DIRP/wallpaper.png" && bspTheme 1 >/dev/null 2>&1 || {
-		echo -e "${col1}[ $DIRP/light.png ] ${res}was not found"
+if [ "$1" != "" ]; then
+	[ -f "$DIRP/$1.png" ] && cp "$DIRP/$1.png" "$DIRP/wallpaper.png" && bspTheme 1 >>~/log.txt 2>&1 || {
+		echo -e "${col1}[ $DIRP/$1.png ] ${res}was not found"
 	}
 fi

@@ -24,30 +24,30 @@ super + shift + Return
 
 # Rofi App Launcher(c)
 super + d
-  sh ~/.config/bspwm/rofi/menu/launcher 1
+  sh ~/.config/bspwm/rofi/menu/launcher 1 >>~/log.txt
 
 super + shift + d
-  sh ~/.config/bspwm/rofi/menu/launcher 2
+  sh ~/.config/bspwm/rofi/menu/launcher 2 >>~/log.txt
   
 # Rofi Network Menu(c)
 super + n
 	networkmanager_dmenu
 
 super + w 
-    firefox
+    firefox >> ~/log.txt
 
 super + t 
-    sh ~/.config/bspwm/rofi/todo/launcher 
+    sh ~/.config/bspwm/rofi/todo/launcher >>~/log.txt
 
 
 super + shift + t 
-    sh ~/.config/bspwm/rofi/theme/launcher
+    sh ~/.config/bspwm/rofi/theme/launcher >>~/log.txt
 
 ##---------- Applications ----------##
 
 # Launch Apps
 super + shift + {w,e,q,a,z}
-	{firefox,virt-manager,whatsapp-for-linux,telegram-desktop,discord}
+	{firefox >>~/log.txt,virt-manager >>~/log.txt,whatsapp-for-linux >>~/log.txt,telegram-desktop >> ~/log.txt,discord >>~/log.txt}
 
 # Terminal Apps
 super + shift + r

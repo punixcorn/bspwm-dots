@@ -21,8 +21,8 @@ if [ $walToggle -eq 1 ] || [ "$override" != "" ]; then
 		exit
 	}
 	echo -e "\e[32m [*] \e[0mSetting wallpaper..."
-	cp "$wallpaperdir" "$HOME/.wallpaper.png" 2>/dev/null
-	wal -q -i "$wallpaperdir" || {
+	cp "$wallpaperdir" "$HOME/.wallpaper.png" 2>>~/log.txt
+	wal -i "$wallpaperdir" >>~/log.txt || {
 		echo "wallpaper or wal not found exiting..."
 		exit 1
 	}
