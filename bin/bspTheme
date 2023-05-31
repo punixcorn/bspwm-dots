@@ -2,6 +2,7 @@
 # using pywal
 override=$1
 walToggle=0
+backend=$(cat ~/.backend)
 wallpaperdir="$HOME/.config/bspwm/wallpaper/wallpaper.png"
 DIR="$HOME/.config/bspwm/"
 
@@ -22,7 +23,8 @@ if [ $walToggle -eq 1 ] || [ "$override" != "" ]; then
 	}
 	echo -e "\e[32m [*] \e[0mSetting wallpaper..."
 	cp "$wallpaperdir" "$HOME/.wallpaper.png" 2>>~/log.txt
-	wal -i "$wallpaperdir" >>~/log.txt || {
+	[ "$backend" = "" ] && backend="wal"
+	wal -i "$wallpaperdir" --backend "$backend" >>~/log.txt || {
 		echo "wallpaper or wal not found exiting..."
 		exit 1
 	}

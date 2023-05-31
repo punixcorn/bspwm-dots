@@ -2,7 +2,11 @@
 col1="\e[35m"
 res="\e[0m"
 DIRP="$HOME/.config/bspwm/wallpaper"
+[ ! -f ~/.backend ] && echo "wal" >~/.backend
 
+echo "colorz backend"
+echo "haishoku backend"
+echo "colorthief backend"
 echo "black"
 echo "blueArch"
 echo "blueBlack"
@@ -28,7 +32,15 @@ echo "gruvbox"
 echo "spark"
 
 if [ "$1" != "" ]; then
-	[ -f "$DIRP/$1.png" ] && cp "$DIRP/$1.png" "$DIRP/wallpaper.png" && bspTheme 1 >>~/log.txt 2>&1 || {
-		echo -e "${col1}[ $DIRP/$1.png ] ${res}was not found"
-	}
+	if [ "$1" = "colorz backend" ]; then
+		echo $1 | awk '{ print $1 }' >~/.backend
+	elif [ "$1" = "haishoku backend" ]; then
+		echo $1 | awk '{ print $1 }' >~/.backend
+	elif [ "$1" = "colorthief backend" ]; then
+		echo $1 | awk '{ print $1 }' >~/.backend
+	else
+		[ -f "$DIRP/$1.png" ] && cp "$DIRP/$1.png" "$DIRP/wallpaper.png" && bspTheme 1 >>~/log.txt 2>&1 || {
+			echo -e "${col1}[ $DIRP/$1.png ] ${res}was not found"
+		}
+	fi
 fi
