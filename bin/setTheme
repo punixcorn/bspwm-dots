@@ -1,4 +1,5 @@
 #!/bin/bash
+# add your wallpaper to ~/.config/bspwm/wallpaper/ it will automatically show
 col1="\e[35m"
 res="\e[0m"
 DIRP="$HOME/.config/bspwm/wallpaper"
@@ -7,29 +8,7 @@ DIRP="$HOME/.config/bspwm/wallpaper"
 echo "colorz backend"
 echo "haishoku backend"
 echo "colorthief backend"
-echo "black"
-echo "blueArch"
-echo "blueBlack"
-echo "blueSky"
-echo "brightPurple"
-echo "colorful"
-echo "colorMt"
-echo "cyberpunk"
-echo "green"
-echo "gruvbox"
-echo "purpleMt"
-echo "red"
-echo "sword"
-echo "beach"
-echo "blade"
-echo "default"
-echo "dracula"
-echo "eleven-dark"
-echo "eleven"
-echo "flowers"
-echo "forest"
-echo "gruvbox"
-echo "spark"
+ls ~/.config/bspwm/wallpaper | sed s/.png//g
 
 if [ "$1" != "" ]; then
 	if [ "$1" = "colorz backend" ]; then
@@ -39,8 +18,10 @@ if [ "$1" != "" ]; then
 	elif [ "$1" = "colorthief backend" ]; then
 		echo $1 | awk '{ print $1 }' >~/.backend
 	else
-		[ -f "$DIRP/$1.png" ] && cp "$DIRP/$1.png" "$DIRP/wallpaper.png" && bspTheme 1 >>~/log.txt 2>&1 || {
-			echo -e "${col1}[ $DIRP/$1.png ] ${res}was not found"
+		wallpaper=""
+		[ -f "$DIRP/$1.png" ] && wallpaper="$1.png" || { [ -f "$DIRP/$1.jpg" ] && wallpaper="$1.jpg"; }
+		[ -f "$DIRP/$wallpaper" ] && { cp "$DIRP/$wallpaper" "$DIRP/wallpaper.png" && bspTheme 1 >>~/log.txt 2>&1; } || {
+			echo -e "${col1}[ $DIRP/$wallpaper ] ${res}was not found"
 		}
 	fi
 fi
