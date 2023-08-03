@@ -1,13 +1,15 @@
 #!/bin/bash
 # using pywal
-override=$1
-walToggle=0
-backend=$(cat ~/.backend)
+override=$1 # means must regen wal even if it is gened
+walToggle=0 # means must regen wal if alreay gened, no need 
+nowal=0     # means cannot find pywal
+backend=$(cat ~/.backend) # the backend to use 
 wallpaperdir="$HOME/.config/bspwm/wallpaper/wallpaper.png"
 DIR="$HOME/.config/bspwm/"
 
 ## -_-_-_-_-_-_-_-_-_ Source wal colors -_-_-_-_-_-_-_-_-_ ##
 
+# source the color wal generated 
 function sourcewal() {
 	echo -e "\e[32m[*] \e[0mApplying Theme"
 	[ -f "$HOME/.cache/wal/colors.sh" ] && source "$HOME/.cache/wal/colors.sh" || walToggle=1
@@ -16,20 +18,58 @@ function sourcewal() {
 ### getting the theme colors
 sourcewal
 
+### checks 
 if [ $walToggle -eq 1 ] || [ "$override" != "" ]; then
 	[ -f "$wallpaperdir" ] && [ -f /bin/wal ] && wal -c || {
 		echo "wall not installed or wallpaper not found"
-		exit
+		nowal=1
 	}
-	echo -e "\e[32m[*] \e[0mSetting wallpaper..."
-	cp "$wallpaperdir" "$HOME/.wallpaper.png" 2>>~/log.txt
-	[ "$backend" = "" ] && backend="wal"
-	wal -i "$wallpaperdir" --backend "$backend" >>~/log.txt || {
-		echo "wallpaper or wal not found exiting..."
-		exit 1
-	}
-	echo -e "\e[32m[*] \e[0mGenerating Theme..."
-	sourcewal
+
+	if [ $nowal -eq 0 ];then ## pywal was found
+		echo -e "\e[32m[*] \e[0mSetting wallpaper..."
+		cp "$wallpaperdir" "$HOME/.wallpaper.png" 2>>~/log.txt
+		[ "$backend" = "" ] && backend="wal"
+		wal -i "$wallpaperdir" --backend "$backend" >>~/log.txt || {
+			echo "wallpaper or wal not found exiting..."
+			exit 1
+		}
+		echo -e "\e[32m[*] \e[0mGenerating Theme..."
+		sourcewal
+	else ### pywal was not found, hardcode colors 
+	
+	wallpaper="$HOME/.config/bspwm/wallpaper/beach.png"
+
+	# Special
+	background='#21222b'
+	foreground='#dadbd4'
+	cursor='#dadbd4'
+	# Colors
+	color0='#21222b'
+	color1='#797E81'
+	color2='#7D8284'
+	color3='#898C8E'
+	color4='#A0A29D'
+	color5='#B4B6AD'
+	color6='#BEC0B5'
+	color7='#dadbd4'
+	color8='#989994'
+	color9='#797E81'
+	color10='#7D8284'
+	color11='#898C8E'
+	color12='#A0A29D'
+	color13='#B4B6AD'
+	color14='#BEC0B5'
+	color15='#dadbd4'
+	# FZF colors
+	export FZF_DEFAULT_OPTS="
+	    $FZF_DEFAULT_OPTS
+	    --color fg:7,bg:0,hl:1,fg+:232,bg+:1,hl+:255
+	    --color info:7,prompt:2,spinner:1,pointer:232,marker:1
+	"
+	# Fix LS_COLORS being unreadable.
+	export LS_COLORS="${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"
+	fi
+
 fi
 
 ## -_-_-_-_-_-_-_-_-_ Assign Colors -_-_-_-_-_-_-_-_-_ ##
