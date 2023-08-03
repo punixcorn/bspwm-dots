@@ -4,9 +4,13 @@ Bspwm Dots
 
 ![img4](./.images/img4.png)
 
-#### 100% support for pywal
+####  pywal core dependency
 
 ### SETUP
+
+- **run**
+` .install.sh ` to install and configure [ compulsory ]
+###### a pywal generation is complusory `wal -i path/to/img`
 
 - **Installation** :
   \
@@ -25,12 +29,11 @@ sudo pacman -S rofi polybar alacritty dunst feh \
 xcb-util-cursor xsettingsd mpc mpd dmenu ncmpcpp \
 networkmanager-dmenu-git light python-gobject \
 xfce4-power-manager maim xclip xorg-xbacklight \
-viewnior conky --noconfirm
+viewnior conky python-pywal --noconfirm
 ```
 
 ```shell
 cava is needed for the polybar visualizer, but isn't in the pacman repos use the AUR
-wal is needed for theme generation based on wallpaper , also only in AUR
 ```
 
 - List:
@@ -42,7 +45,7 @@ alacritty
 dunst
 picom # jhonaburg picom
 feh
-wal
+python-pywal
 mpc
 dmenu
 light
