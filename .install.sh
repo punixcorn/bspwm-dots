@@ -5,7 +5,7 @@ sudo pacman -S rofi polybar alacritty dunst feh \
 xcb-util-cursor xsettingsd mpc mpd dmenu ncmpcpp \
 networkmanager-dmenu-git light python-gobject \
 xfce4-power-manager maim xclip xorg-xbacklight \
-viewnior conky python-pywal --noconfirm
+viewnior conky python-pywal xgd-user-dirs --noconfirm
 
 [ -f /bin/yay ] && yay -S cava || echo "yay not found"
 
