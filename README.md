@@ -4,12 +4,29 @@ Bspwm Dots
 
 ![img4](./.images/img4.png)
 
-####  pywal core dependency
+#### pywal core dependency
+
+# WALLPAPERS
+
+WALLPAPERS are not included create a folder called `wallpaper` in the bspwm
+folder
+
+```bash
+mkdir ~/.config/bspwm/wallpaper/
+```
+
+and put your wallpaper there, it should be in a `png` format only\
+there should a wallpaper there called `wallpaper.png` which is the main
+wallpaper\
+to switch `wallpapers/themes` use `super + shift + t` and pick the wallpaper
+name\
+the first 3 are pywal engines, everything below that is a png from the wallpaper
+folder
 
 ### SETUP
 
-- **run**
-` .install.sh ` to install and configure [ compulsory ]
+- **run** `.install.sh` to install and configure [ compulsory ]
+
 ###### a pywal generation is complusory `wal -i path/to/img`
 
 - **Installation** :
