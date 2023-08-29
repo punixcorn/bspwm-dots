@@ -1,8 +1,10 @@
 Bspwm Dots
 
-![img](./.images/conky.img)
+![img](./.images/img1.png)
 
-![img4](./.images/img4.png)
+![img4](./.images/img2.png)
+
+![img4](./.images/rofi.png)
 
 #### pywal core dependency
 
