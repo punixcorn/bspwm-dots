@@ -8,7 +8,7 @@ DIRP="$HOME/.config/bspwm/wallpaper"
 echo "colorz backend"
 echo "haishoku backend"
 echo "colorthief backend"
-ls ~/.config/bspwm/wallpaper | sed s/.png//g
+ls ~/.config/bspwm/wallpaper | grep ".png" | sed s/.png//g # only allow png files
 
 if [ "$1" != "" ]; then
 	if [ "$1" = "colorz backend" ]; then

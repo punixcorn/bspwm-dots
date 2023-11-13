@@ -47,7 +47,7 @@ super + shift + t
 
 # Launch Apps
 super + shift + {w,e,q,a,z,x}
-	{brave >>~/log.txt,virt-manager >>~/log.txt,whatsapp-for-linux >>~/log.txt,telegram-desktop >> ~/log.txt,discord >>~/log.txt,signal-desktop-beta >> ~/.log.txt}
+	{firefox-developer-edition >>~/log.txt,virt-manager >>~/log.txt,whatsapp-for-linux >>~/log.txt,telegram-desktop >> ~/log.txt,discord >>~/log.txt,signal-desktop-beta >> ~/.log.txt}
 
 # Terminal Apps
 super + shift + r
