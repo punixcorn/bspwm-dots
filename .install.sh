@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "installing packages"
+echo "installing needed packages"
 
 sudo pacman -S rofi polybar alacritty dunst feh \
 	xcb-util-cursor xsettingsd mpc mpd dmenu ncmpcpp \
@@ -11,16 +11,22 @@ sudo pacman -S rofi polybar alacritty dunst feh \
 
 echo "Moving BSPWM files over
 
-[ -d $HOME/.config/bspwm/ ] && cp -r $HOME/.config/bspwm $HOME/.config/bspwm-backup && cp -r ../bspwm-dots $HOME/.config/bspwm || cp -r ../bspwm-dots $HOME/.config/bspwm
+CONFDIR="$HOME/.config/bspwm/"
+
+[ -d $CONFDIR ] && mv $CONFDIR $HOME/.config/bspwm-backup
+[ ! -d $CONFDIR ] && mkdir $CONFDIR
+cp -r ** $CONFDIR
+
 
 echo "moving others files over"
+
 [ -d $(pwd)/others ] && {
 	[ ! -d $HOME/.config/networkmanager-dmenu/ ] && mkdir $HOME/.config/networkmanager-dmenu
-	cp -r $(pwd)/others/config.ini $HOME/.config/networkmanager-dmenu
+	cp -r $CONFDIR/others/config.ini $HOME/.config/networkmanager-dmenu
 	[ ! -d $HOME/.local/share/fonts ] && mkdir $HOME/.local/share/fonts
-	cp -r $(pwd)/others/fonts/* $HOME/.local/share/fonts
+	cp -r $CONFDIR/others/fonts/* $HOME/.local/share/fonts
 } || echo "others folder not found"
 
-[ -f /bin/wal ] && wal -i $(pwd)/wallpaper/wallpaper.png
+[ -f /bin/wal ] && wal -i $CONFDIR/wallpaper.png
 
 exit 0
