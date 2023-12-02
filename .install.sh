@@ -5,11 +5,11 @@ sudo pacman -S rofi polybar alacritty dunst feh \
 	xcb-util-cursor xsettingsd mpc mpd dmenu ncmpcpp \
 	networkmanager-dmenu-git light python-gobject \
 	xfce4-power-manager maim xclip xorg-xbacklight \
-	viewnior conky python-pywal xgd-user-dirs --noconfirm
+	viewnior conky python-pywal xdg-user-dirs --noconfirm
 
 [ -f /bin/yay ] && yay -S cava || echo "yay not found"
 
-echo "Moving BSPWM files over
+echo "moving BSPWM files over"
 
 CONFDIR="$HOME/.config/bspwm/"
 
@@ -17,10 +17,9 @@ CONFDIR="$HOME/.config/bspwm/"
 [ ! -d $CONFDIR ] && mkdir $CONFDIR
 cp -r ** $CONFDIR
 
-
 echo "moving others files over"
 
-[ -d $(pwd)/others ] && {
+[ -d $CONFDIR/others ] && {
 	[ ! -d $HOME/.config/networkmanager-dmenu/ ] && mkdir $HOME/.config/networkmanager-dmenu
 	cp -r $CONFDIR/others/config.ini $HOME/.config/networkmanager-dmenu
 	[ ! -d $HOME/.local/share/fonts ] && mkdir $HOME/.local/share/fonts
